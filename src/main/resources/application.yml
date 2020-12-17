@@ -1,0 +1,39 @@
+# DataSource Config
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/wechatloginsdb?useUnicode=true&useSSL=false&allowPublicKeyRetrieval=true&characterEncoding=utf8&serverTimezone=Asia/Shanghai
+    username: root
+    password: nibaba
+    type: com.alibaba.druid.pool.DruidDataSource
+    druid:
+      stat-view-servlet:
+        enabled: true
+        url-pattern: /druid/*
+        login-username: admin
+        login-password: 123456
+      initial-size: 5
+      min-idle: 5
+      max-active: 20
+      max-wait: 60000
+      time-between-eviction-runs-millis: 60000
+      min-evictable-idle-time-millis: 300000
+      validation-query: SELECT 1 FROM DUAL
+      test-while-idle: true
+      test-on-borrow: false
+      test-on-return: false
+      pool-prepared-statements: true
+      max-pool-prepared-statement-per-connection-size: 20
+      filters: [stat,wall,log4j]
+      filter:
+        stat:
+          merge-sql: true
+          slow-sql-millis: 5000
+mybatis-plus:
+  mapper-locations: classpath*:/mapper/**Mapper.xml
+  config-location: classpath:/mybatis/mybatis-config.xml
+
+wxcode:
+  app:
+    appid: wx8d8476ecc48d657d
+    appsecret: b79eeeed1fcc3f9f4f1218b1a4b5004a
