@@ -26,31 +26,11 @@ public class Wechatuser implements Serializable {
      */
     @TableId(value = "id",type = IdType.AUTO)
     private Integer id;
-    /**
-     * 昵称
-     */
-    private String nickname;
 
-    /**
-     * 头像url
-     */
-    private String avatarurl;
     /**
      * 用户电话
      */
     private String tel;
-    /**
-     * 性别
-     */
-    private String gender;
-    /**
-     * 微信用户所填地区
-     */
-    private String country;
-    /**
-     * 微信用户所选语言
-     */
-    private String language;
     /**
      * 微信传回openid
      */

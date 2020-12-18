@@ -39,7 +39,7 @@ public class WechatuserController {
         if (!request.containsKey("code") || request.get("code") == null || request.get("code").equals("")) {
             return Result.fail(500, "失败");
         } else {
-            return Result.success(loginService.loginin(request.get("code")));
+            return Result.success("success loginin",loginService.loginin(request.get("code")));
         }
     }
 

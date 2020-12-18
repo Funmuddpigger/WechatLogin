@@ -11,7 +11,6 @@ public class Result implements Serializable {
     private Integer code; //状态码
     private String msg; //消息
     private Object data; //数据对象
-    private Object token;
 
     public void setData(Object data) {
         this.data = data;
@@ -53,16 +52,6 @@ public class Result implements Serializable {
         result.setData(data);
         return result;
     }
-
-    public static  Result success(String msg,Object data,Object token){
-        Result result = new Result(); //别拿出去方法外面new,tm占用内存
-        result.setCode(200);
-        result.setMsg(msg);
-        result.setData(data);
-        result.setToken(token);
-        return result;
-    }
-
 
     /**
      *  失败状态
