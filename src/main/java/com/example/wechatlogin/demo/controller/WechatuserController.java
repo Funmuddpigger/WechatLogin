@@ -6,6 +6,7 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.example.wechatlogin.demo.service.LoginService;
 import com.example.wechatlogin.demo.util.Result;
 import org.apache.shiro.authz.annotation.RequiresAuthentication;
+import org.apache.shiro.authz.annotation.RequiresRoles;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -43,6 +44,7 @@ public class WechatuserController {
         }
     }
 
+    @RequiresRoles("123")
     @RequiresAuthentication
     @PostMapping("/sayHello")
     public Result sayHello() {

@@ -1,7 +1,10 @@
 package com.example.wechatlogin.demo.shiro;
 
+import com.example.wechatlogin.demo.entity.Wechatuser;
 import com.example.wechatlogin.demo.jwt.JwtToken;
 import com.example.wechatlogin.demo.jwt.JwtUtils;
+import com.example.wechatlogin.demo.mapper.WechatuserMapper;
+import com.example.wechatlogin.demo.util.ApplicationContextUtils;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.AuthenticationInfo;
 import org.apache.shiro.authc.AuthenticationToken;
@@ -19,11 +22,15 @@ import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 
+@SuppressWarnings("SpringJavaInjectionPointsAutowiringInspection")
 @Component
 public class MyRealm {
 
     @Autowired
     private JwtUtils jwtUtils;
+
+    @Autowired
+    private WechatuserMapper wechatuserMapper;
 
     public List<Realm> allRealm() {
         List<Realm> realmList = new LinkedList<>();
@@ -41,6 +48,10 @@ public class MyRealm {
             }
             @Override
             protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principals) {
+                String token = principals.toString();
+                System.out.println("token:"+token);
+                String wxOpenIdByToken = jwtUtils.getWxOpenIdByToken(token);
+
                 return new SimpleAuthorizationInfo();
             }
             /**

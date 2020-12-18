@@ -1,16 +1,13 @@
 package com.example.wechatlogin.demo.jwt;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.apache.shiro.authc.HostAuthenticationToken;
+import org.apache.shiro.authc.AuthenticationToken;
 
 @Data
-@AllArgsConstructor
 @NoArgsConstructor
-public class JwtToken implements HostAuthenticationToken {
+public class JwtToken implements AuthenticationToken {
 
-    private String host;
 
     private String token;
 
